@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAGcipes Sign-In</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="signup-container">
+    
+    <form id="login-form">
+
+      <div class="signup-form-group">
+        <label for="name">Username</label>
+        <input type="text" id="name" name="name" placeholder="Enter Username" required />
+      </div>
+
+      <div class="signup-form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required />
+      </div>
+
+      <button type="submit" class="signup">Log in</button>
+
+    </form>
+
+    <div class="login-link">
+      Don't have an account? 
+      <a onclick="window.location.href='/signup'" style="cursor: pointer;">Sign Up</a> /
+      <a onclick="window.location.href='/'" style="cursor: pointer;">Home</a>
+    </div>
+    
+  </div>
+</body>
+
+
+<script src="/js/login.js"></script>
+
+
+</html>
+
+
+</body>
+</html>

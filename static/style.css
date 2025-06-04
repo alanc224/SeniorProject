@@ -1,0 +1,296 @@
+/* static/style.css */
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #FFB74D;
+    padding-top: 6rem;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(600px, 90%);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e79a27;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-left: 2.2rem;
+}
+
+.logo::before {
+    content: "🍔";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    padding: 0 0.5rem;
+}
+
+.nav-links::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 1.2rem;
+    background-color: rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-size: 1rem;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: #e79a27;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    transform: translateY(-2px);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.circular-text {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    pointer-events: none;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotateSVG 15s linear infinite;
+}
+
+.rotating-text {
+    fill: white;
+    font-size: 2.4rem;
+    font-style: italic;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, serif;
+    letter-spacing: 2px;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+}
+
+@keyframes rotateSVG {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.button-wrapper {
+    width: 5.5rem;
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.5rem;
+    height: 2.8rem;
+    background-color: #e79a27;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: absolute;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-wrapper:hover .cta-button {
+    background-color: white;
+    color: #e79a27;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    transform: rotate(360deg) scale(1.1);
+}
+
+h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #000000;
+}
+
+/* Carousel Container */
+:root {
+    --card-width: 300px;
+    --total-cards: 3;
+    --card-gap: 2rem;
+    --carousel-width: calc((var(--card-width) + var(--card-gap)) * var(--total-cards));
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+    margin-bottom: 3rem;
+}
+
+.carousel-container::before,
+.carousel-container::after {
+    content: "";
+    height: 100%;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, #FFB74D 10%, transparent);
+}
+
+.carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, #FFB74D 10%, transparent);
+}
+
+.recipe-carousel {
+    display: flex;
+    gap: var(--card-gap);
+    animation: scroll 25s linear infinite;
+    width: max-content;
+    will-change: transform;
+}
+
+.recipe-carousel:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-1 * var(--carousel-width)));
+    }
+}
+
+.recipe-card {
+    flex: 0 0 var(--card-width);
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.recipe-info {
+    padding: 1rem;
+}
+
+.recipe-info p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+}

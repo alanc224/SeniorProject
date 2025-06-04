@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">  
+</head>
+
+  
+<!-- Should be able to search from any page -->
+<body>
+    <div class="container">
+        <div class="search-container">
+            <span class="logo">RAGcipes</span>
+            <input type="text" id="searchQuery" class="search-bar" placeholder="Search RAGcipes..." />
+            <div class="button-wrapper">
+                <button onclick="fetchFoodRecommendations(document.getElementById('searchQuery').value)">Search</button>
+            </div>
+        </div>  
+        <button id="profileButton" onclick="window.location.reload();">Dashboard</button>
+    </div>
+
+    <div class="top-left-buttons">
+        <button onclick="window.location.href='/'">🏠 Home</button>
+        <button onclick="logout()">🚪 Logout</button>
+      </div>
+      
+
+    <div id="food-results-container">
+        <div id="food-results"></div>
+    </div>
+
+
+       <div id="main-profile-content">
+        <div class="main-profile-label">
+        </div>
+
+        <div class="container rounded bg-white">
+        <div class="profile-picture">
+            <img src="../images/default.png">
+            <span class="username">Clever Username</span>
+            <script>
+                function logout() {
+                  localStorage.removeItem("token"); //  Clear stored JWT
+                  window.location.href = "/signin"; // Redirect to login page
+                }
+              </script>
+              <button onclick="logout()">Logout</button>
+
+        <div class="profile-container">
+            <div class="recipe-card">
+                <img src="../images/crispy-chicken.png" alt="crispy-chicken">
+                <div class="recipe-info">
+                    <h3>Crispy Chicken</h3>
+                    <p>30 minutes</p>
+                </div>
+            </div>
+            <div class="recipe-card">
+                <img src="../images/hero-pasta.png" alt="pasta">
+                <div class="recipe-info">
+                    <h3>Hero Pasta</h3>
+                    <p>1 hour</p>
+                </div>
+            </div>
+            <div class="recipe-card">
+                <img src="../images/honey-garlic-shrimp.png" alt="garlic-shrimp">
+                <div class="recipe-info">
+                    <h3>Honey Garlic Shrimp</h3>
+                    <p>1 hour 30 minutes</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-label">
+            <h2>Wishlist</h2>
+        </div>
+
+        <div class="profile-container" id="wishlist-container">
+            </div>
+    </div>
+
+    <div id="food-results-container">
+        <div id="food-results"></div>
+    </div>
+</div>
+
+
+
+<!--dashboard front js file-->
+<script src="/js/profile.js"></script>
+
+
+
+<!-- Future: implement search on this pg-->
+<script src="/js/reccomend.js"></script>
+
+<div class="top-left-buttons">
+    <button onclick="window.location.href='/'">🏠 Home</button>
+    <button onclick="logout()">🚪 Logout</button>
+  </div>
+</body>
+</html>

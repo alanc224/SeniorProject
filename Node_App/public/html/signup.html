@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAGcipes Sign-Up</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <form id="signup-form">
+          <div class="signup-form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Enter First Name" required />
+          </div>
+          <div class="signup-form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Enter Last Name" required />
+          </div>
+          <div class="signup-form-group">
+            <label for="name">Username</label>
+            <input type="text" id="name" name="name" placeholder="Enter Username" required />
+          </div>
+          <div class="signup-form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required />
+          </div>
+          <div class="signup-form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Enter to Confirm Password" required />
+          </div>
+          <div class="signup-form-group">
+            <label for="cuisine">Favourite Cuisine</label>
+            <select id="cuisine" name="cuisine" required>
+              <option value="italian">Italian</option>
+              <option value="indian">Indian</option>
+              <option value="chinese">Chinese</option>
+              <option value="mexican">Mexican</option>
+              <option value="thai">Thai</option>
+              <option value="japanese">Japanese</option>
+              <option value="greek">Greek</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <!-- end -->
+          <button type="submit" class="signup">Sign Up</button>
+          <form id="signup-form">
+
+        
+        <div class="login-link">
+          Already have an account? <a onclick="window.location.href='/signin'" style="cursor: pointer;">Log in</a>
+        </div>
+      </div>
+</body>
+
+
+<script src ="/js/signup.js"></script>
+</html>

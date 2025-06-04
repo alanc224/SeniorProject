@@ -1,0 +1,189 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAGcipes</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <a href="/" class="logo-link"><span class="logo">RAGcipes</span></a>
+            <input type="text" id="searchQuery" class="search-bar" placeholder="Search by ingredient, cuisine, diet..." />
+            <div class="button-wrapper">
+                <button onclick="fetchFoodRecommendations(document.getElementById('searchQuery').value)">Search</button>
+            </div>
+        </div>
+        <div class="auth-container" id="auth-container">
+            <button onclick="window.location.href='/signin'" class="auth-button signin">Sign In</button>
+            <div class="auth-divider"></div>
+            <button onclick="window.location.href='/signup'" class="auth-button signup">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Sadia - food category -->
+    <div class="menu-bar">
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a onclick="fetchFoodRecommendations('Breakfast')">Breakfast</a></li>
+            <li><a onclick="fetchFoodRecommendations('Lunch')">Lunch</a></li>
+            <li><a onclick="fetchFoodRecommendations('Dinner')">Dinner</a></li>
+            <li><a onclick="fetchFoodRecommendations('Drinks')">Drinks</a></li>
+            <li><a onclick="fetchFoodRecommendations('Desserts')">Desserts</a></li>
+            <li><a href="/feed">Global Feed</a></li>
+
+        </ul>
+    </div>
+
+    <!-- RESULTS CONTAINER: Appears right below search -->
+    <div id="food-results-container">
+        <div id="food-results"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <div class="hero-overlay"></div>
+            <img id="hero-image" src="../images/hero-pasta.png" alt="Seafood Pasta">
+            <div class="hero-text">
+                <svg class="circular-text" viewBox="-150 -150 300 300">
+                    <defs>
+                        <path id="circlePath" d="M 0,100 A 100,100 0 1,1 0,-100 A 100,100 0 1,1 0,100" />
+                    </defs>
+                    <text class="rotating-text">
+                        <textPath href="#circlePath" startOffset="0%">
+                            Discover your next favorite meal.
+                        </textPath>
+                    </text>
+                </svg>
+
+
+                <div class="button-wrapper" id="hero_signupButton">
+                    <button onclick="window.location.href='/signup'">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container features-section" id="features-section">
+        <h2 class="section-title">Discover RAGcipes</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI-Powered Understanding</h3>
+                <p>Our advanced AI system understands your queries in natural language, making recipe searches more intuitive than ever</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Contextual Search</h3>
+                <p>Find recipes based on ingredients, dietary preferences or even vague cravings you have in mind</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>Detailed Instructions</h3>
+                <p>Get complete recipes with step-by-step instructions, ingredient lists, and cooking tips for perfect results</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Real-Time Results</h3>
+                <p>Instant recipe suggestions powered by RAG technology for a seamless cooking experience</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-toggle">
+        <button class="music-toggle-btn" onclick="toggleMusicControls()">🎧</button>
+        <div class="integrated-music-controls" id="musicControls">
+            <div class="music-control-content">
+                <div class="music-selector">
+                    <h3>Pick Your Mood</h3>
+                    <select id="vibeSelector" onchange="changeVibe()">
+                        <option value="37i9dQZF1DX4WYpdgoIcn6">Chill Vibes</option>
+                        <option value="37i9dQZF1DX1s9knjP51Oa">Jazz Dinner</option>
+                        <option value="37i9dQZF1DWXLeA8Omikj7">Lo-Fi Beats</option>
+                        <option value="37i9dQZF1DXdPec7aLTmlC">Pop Vibes</option>
+                    </select>
+                </div>
+                <div class="spotify-player">
+                    <iframe id="vibePlayer"
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6"
+                        width="250"
+                        height="80"
+                        frameborder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/reccomend.js"></script>
+    <script>
+        function toggleMusicControls() {
+            const btn = document.querySelector('.music-toggle-btn');
+            const controls = document.getElementById('musicControls');
+            btn.classList.toggle('active');
+            controls.classList.toggle('active');
+        }
+
+        function changeVibe() {
+            const playlistId = document.getElementById("vibeSelector").value;
+            const player = document.getElementById("vibePlayer");
+            player.src = `https://open.spotify.com/embed/playlist/${playlistId}`;
+        }
+    </script>
+
+    <script>
+        function checkSignedIn() {
+            const token = localStorage.getItem('token'); // check if there is a token
+            return token !== null;
+        }
+
+        function updateButton() {
+            const hero_signupButton= document.getElementById('hero_signupButton'); // just need to edit the button itself
+            const SignupButton = hero_signupButton ? hero_signupButton.querySelector('button') : null;
+
+            if (SignupButton) { // if there is a button displayed
+                if (checkSignedIn()) { 
+                    SignupButton.style.display = 'none'; // if user is signed in we want to hide the button
+                } else {
+                    SignupButton.style.display = 'block'; // otherwise show it
+                }
+            }
+        }
+        updateButton();
+        window.addEventListener('storage', updateButton);
+    </script>
+    
+</body>
+</html>
+
+    <!-- <div class="container">
+        <h2>Trending recipes</h2>
+        <div class="carousel-container">
+            <div class="recipe-carousel">
+                {% for i in range(4) %}
+                    {% for recipe in trending_recipes %}
+                    <div class="recipe-card">
+                        <img src="{{ url_for('static', filename=recipe.image) }}" alt="{{ recipe.title }}">
+                        <div class="recipe-info">
+                            <h3>{{ recipe.title }}</h3>
+                            <p>{{ recipe.time }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div> -->
+ 
+
+<!--
+    <script src="/js/reccomend.js"></script>
+<body>
+</html>
+
+-->

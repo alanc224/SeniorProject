@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Feed</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <a href="/" class="logo-link"><span class="logo">RAGcipes</span></a>
+            <input type="text" id="searchQuery" class="search-bar" placeholder="Search by ingredient, cuisine, diet..." />
+            <div class="button-wrapper">
+                <button onclick="fetchFoodRecommendations(document.getElementById('searchQuery').value)">Search</button>
+            </div>
+        </div>
+        <div class="auth-container" id="auth-container">
+            <button onclick="window.location.href='/signin'" class="auth-button signin">Sign In</button>
+            <div class="auth-divider"></div>
+            <button onclick="window.location.href='/signup'" class="auth-button signup">Sign Up</button>
+          </div>
+          <button id="feedButton" onclick="window.location.reload();">Global Feed</button>
+    </div>
+
+
+    <div class="top-left-buttons">
+            <button onclick="window.location.href='/'">🏠 Home</button>
+            <button onclick="logout()">🚪 Logout</button>
+    </div>
+
+    <div id="food-results-container">
+        <div id="food-results"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero feed_header">
+            <div class="hero-overlay"></div>
+            <img id="hero-image" src="../images/mealtime.png" alt="Assortment of dishes">
+            <div class="hero-text">
+              <span class="feed-header-text">See What Others Are Cooking</span>
+            </div>
+        </div>
+    </div>
+
+<div id="feed-container">
+    <div class="container post-box">
+        <textarea id="postContent" class="post-textarea" placeholder="What's cooking? Share it with the world..."></textarea>
+        <button onclick="submitPost()" class="submit-post-button">Submit</button>
+    </div>
+
+    <div id="feedContainer">
+        <div class="feed-post">
+            <div class="post-header">
+                <img class="feed-pfp" src="../images/default.png" alt="Default User Profile Picture">
+                <div class="post-body">
+                    <div class="post-info">
+                        <span class="username">rando1234</span>
+                         <div class="post-content">
+                             Just tried the new shrimp recipe. 10/10
+                         </div>
+                        <span class="timestamp">5/11/25</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feed-post">
+            <div class="post-header">
+                <img class="feed-pfp" src="../images/default.png" alt="Default User Profile Picture">
+                <div class="post-body">
+                    <div class="post-info">
+                        <span class="username">Heisenberg</span>
+                         <div class="post-content">
+                             I messed up the macaroni recipe. Ordering pizza instead.
+                         </div>
+                        <span class="timestamp">5/12/25</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-wrapper feed-button">
+            <button onclick=''>Post</button>
+        </div>
+    </div>
+</div>
+    <script src="/js/globalFeed.js"></script>
+    <script src="/js/reccomend.js"></script>
+</body>
+</html>

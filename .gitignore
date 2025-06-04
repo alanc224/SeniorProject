@@ -1,0 +1,12 @@
+.env
+env
+venv/
+.venv/
+datasets/
+env.bak/
+venv.bak/
+RAGcipes.ipynb
+test.py
+__pycache__/
+modeltest/
+backup.env
